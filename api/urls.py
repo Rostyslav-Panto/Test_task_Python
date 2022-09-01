@@ -1,6 +1,9 @@
-from django.contrib import admin
-from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from .views import PortfolioView
 
-urlpatterns = [
+app_name = 'main_page_api'
 
-]
+router = DefaultRouter()
+router.register('portfolios', PortfolioView, basename='portfolios')
+
+urlpatterns = router.urls
