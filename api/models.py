@@ -10,7 +10,7 @@ class Portfolio(models.Model):
 
 
 class Image(models.Model):
-    image_path = models.CharField(max_length=120)
+    image = models.ImageField(max_length=120, default="media/default_image.png")
     name = models.CharField(max_length=120)
     description = models.TextField(max_length=1200)
     portfolio_id = models.ForeignKey(Portfolio, on_delete=models.CASCADE)

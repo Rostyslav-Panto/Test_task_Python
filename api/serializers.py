@@ -1,10 +1,14 @@
-import datetime
 from rest_framework import serializers
 
-from api.models import Portfolio
+from api.models import Portfolio, Image
 
 
 class PortfolioSerializer(serializers.ModelSerializer):
     class Meta:
         model = Portfolio
-        fields = '__all__'
+
+
+class ImageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Image
+        exclude = ('publication_date',)
