@@ -1,12 +1,26 @@
 from rest_framework import serializers
 
-from api.models import Portfolio, Image
+from api.models import Portfolio, Image, Comment
+
+
+class CommentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Comment
+        fields = '__all__'
+        read_only_fields = ('publication_date',)
 
 
 class ImageSerializer(serializers.ModelSerializer):
+    comments = CommentSerializer(many=True, read_only=True)
+
     class Meta:
         model = Image
-        exclude = ('publication_date',)
+        fields = (
+            'image',
+            'name',
+            'description',
+            'portfolio_id',
+            'comments',)
 
 
 class PortfolioSerializer(serializers.ModelSerializer):

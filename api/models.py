@@ -19,7 +19,7 @@ class Image(models.Model):
 
 class Comment(models.Model):
     description = models.TextField(max_length=1200)
-    image_id = models.ForeignKey(Image, on_delete=models.CASCADE)
+    image_id = models.ForeignKey(Image, on_delete=models.CASCADE, related_name="comments")
     author_id = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
     publication_date = models.DateField(default=date.today)
 
