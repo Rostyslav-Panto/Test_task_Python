@@ -6,7 +6,11 @@ from api.models import Portfolio, Image, Comment
 class CommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment
-        fields = '__all__'
+        fields = (
+            'description',
+            'publication_date',
+            'author_id'
+        )
         read_only_fields = ('publication_date',)
 
 
